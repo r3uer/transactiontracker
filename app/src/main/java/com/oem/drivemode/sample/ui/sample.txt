@@ -1,0 +1,33 @@
+## Plan: Transaction Tracker App Implementation
+
+This plan outlines how to add a transaction tracker feature to your existing Android/Kotlin/Jetpack Compose project. It covers UI design, data modeling, local storage with Room, ViewModel/state management, Compose integration, testing, and Gradle/dependency updates. The steps are tailored to your current project structure under `app/src/main/java/com/oem/drivemode/sample/`.
+
+### Steps
+1. **Design UI screens**:
+   - Add Compose screens for listing transactions, adding a new transaction, and deleting transactions.
+   - Place new UI files in `app/src/main/java/com/oem/drivemode/sample/ui/`.
+
+2. **Define Transaction data model**:
+   - Create a `Transaction.kt` data class with fields like id, amount, description, date.
+   - Place in a new or existing `model` package.
+
+3. **Set up Room database**:
+   - Add Room dependencies in `app/build.gradle.kts`.
+   - Create `TransactionDao`, `TransactionDatabase`, and necessary entities in a `data` package.
+
+4. **Implement ViewModel and state management**:
+   - Create a `TransactionViewModel` in a `viewmodel` package.
+   - Use `StateFlow` or `LiveData` for transaction list and UI state.
+
+5. **Integrate ViewModel with Compose UI**:
+   - Connect ViewModel to Compose screens for displaying, adding, and deleting transactions.
+   - Use state hoisting and event callbacks.
+
+6. **Update Gradle dependencies**:
+   - Ensure Room, lifecycle, and Compose dependencies are up to date in `app/build.gradle.kts`.
+
+### Further Considerations
+1. Should deleted transactions be soft-deleted (archived) or permanently removed?
+2. Do you want to support editing transactions, or just add/delete?
+3. Consider using Hilt or another DI framework for easier testing and modularity.
+4. Should the transaction list support sorting/filtering (by date, amount, etc.)?
